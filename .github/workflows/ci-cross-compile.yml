@@ -31,7 +31,7 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt update -y
-          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev gcc-multilib g++-multilib
+          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev gcc-multilib g++-multilib i686-linux-gnu-gcc i686-linux-gnu-g++
         if: startsWith(matrix.os, 'ubuntu')
 
       - uses: lukka/get-cmake@latest

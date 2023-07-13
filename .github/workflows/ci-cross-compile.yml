@@ -45,3 +45,4 @@ jobs:
           configurePreset: '${{ matrix.preset }}'
           configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`${{ matrix.extra && format(', {0}, `-DVCPKG_TARGET_TRIPLET={1}`', matrix.extra, matrix.triplet) }}]"
           buildPreset: '${{ matrix.preset }}-debug'
+          testPreset: '${{ matrix.preset }}-debug'

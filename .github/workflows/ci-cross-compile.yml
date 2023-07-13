@@ -1,0 +1,58 @@
+name: Cross Compile CI
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            preset: ninja-multi-vcpkg
+            triplet: x86-linux
+            extra: '`-DCMAKE_C_COMPILER=i686-linux-gnu-gcc`, `-DCMAKE_CXX_COMPILER=i686-linux-gnu-g++`'
+            cc: i686-linux-gnu-gcc
+            cxx: i686-linux-gnu-g++
+          - os: windows-latest
+            preset: msvc-17-vcpkg
+            triplet: x86-windows
+            extra: '`-A`, `Win32`'
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          submodules: recursive
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install -y libgl1-mesa-dev libglu1-mesa-dev
+        if: startsWith(matrix.os, 'ubuntu')
+
+      - uses: lukka/get-cmake@latest
+
+      - name: Restore from cache and setup vcpkg executable and data files.
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgJsonGlob: 'vcpkg.json'
+
+      - name: Run CMake+vcpkg to build packages.
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: '${{ matrix.preset }}'
+          configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`${{ matrix.extra && format(', {0}, `-DVCPKG_TARGET_TRIPLET={1}`', matrix.extra, matrix.triplet) }}]"
+
+      - name: Run CMake+Ninja to build the code (Debug).
+        uses: lukka/run-cmake@v10
+        with:
+          buildPreset: '${{ matrix.preset }}-debug'
+
+      - name: Run CMake+vcpkg to build the code (Release).
+        uses: lukka/run-cmake@v10
+        with:
+          buildPreset: '${{ matrix.preset }}-release'

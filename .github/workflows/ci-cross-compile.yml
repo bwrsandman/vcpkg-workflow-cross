@@ -17,6 +17,10 @@ jobs:
             cc: i686-linux-gnu-gcc
             cxx: i686-linux-gnu-g++
 
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
+
     steps:
       - uses: actions/checkout@v3
         with:

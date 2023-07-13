@@ -16,6 +16,10 @@ jobs:
             extra: '`-DCMAKE_C_COMPILER=i686-linux-gnu-gcc`, `-DCMAKE_CXX_COMPILER=i686-linux-gnu-g++`'
             cc: i686-linux-gnu-gcc
             cxx: i686-linux-gnu-g++
+          - os: windows-latest
+            preset: msvc-17-vcpkg
+            triplet: x86-windows
+            extra: '`-A`, `Win32`'
 
     env:
       CC: ${{ matrix.cc }}
@@ -45,5 +49,14 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
-          configurePresetAdditionalArgs: "[`${{ matrix.extra && format(', {0}, `-DVCPKG_TARGET_TRIPLET={1}`', matrix.extra, matrix.triplet) }}]"
+          configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`${{ matrix.extra && format(', {0}, `-DVCPKG_TARGET_TRIPLET={1}`', matrix.extra, matrix.triplet) }}]"
+
+      - name: Run CMake+Ninja to build the code (Debug).
+        uses: lukka/run-cmake@v10
+        with:
           buildPreset: '${{ matrix.preset }}-debug'
+
+      - name: Run CMake+vcpkg to build the code (Release).
+        uses: lukka/run-cmake@v10
+        with:
+          buildPreset: '${{ matrix.preset }}-release'

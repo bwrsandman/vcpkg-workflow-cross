@@ -10,25 +10,25 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          - triplet: x64-linux
+            os: ubuntu-latest
             preset: ninja-multi-vcpkg
-            triplet: x64-linux
             setup: |
               sudo apt-get update 
               sudo apt-get install -y \
               libx11-dev libxext-dev \
               libgl1-mesa-dev libglu1-mesa-dev
-          - os: ubuntu-latest
+          - triplet: x64-linux-dynamic
+            os: ubuntu-latest
             preset: ninja-multi-vcpkg
-            triplet: x64-linux-dynamic
             setup: |
               sudo apt-get update
               sudo apt-get install -y \
               libx11-dev libxext-dev \
               libgl1-mesa-dev libglu1-mesa-dev
-          - os: ubuntu-latest
+          - triplet: x86-linux
+            os: ubuntu-latest
             preset: ninja-multi-vcpkg
-            triplet: x86-linux
             setup: |
               sudo dpkg --add-architecture i386
               sudo apt-get update 
@@ -39,9 +39,9 @@ jobs:
               libgl1-mesa-dev:i386 libglu1-mesa-dev:i386
             cc: i686-linux-gnu-gcc
             cxx: i686-linux-gnu-g++
-          - os: ubuntu-latest
+          - triplet: arm64-linux
+            os: ubuntu-latest
             preset: ninja-multi-vcpkg
-            triplet: arm64-linux
             setup: |
               sudo dpkg --add-architecture arm64
               echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy main restricted"                               | sudo tee    /etc/apt/sources.list.d/arm-cross-compile-sources.list
@@ -60,15 +60,15 @@ jobs:
               libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64
             cc: aarch64-linux-gnu-gcc
             cxx: aarch64-linux-gnu-g++
-          - os: windows-latest
+          - triplet: x64-windows
             preset: ninja-multi-vcpkg
-            triplet: x64-windows
-          - os: windows-latest
+            os: windows-latest
+          - triplet: x86-windows
             preset: ninja-multi-vcpkg
-            triplet: x86-windows
-          - os: windows-latest
+            os: windows-latest
+          - triplet: arm64-windows
             preset: ninja-multi-vcpkg
-            triplet: arm64-windows
+            os: windows-latest
 
     env:
       CC: ${{ matrix.cc }}

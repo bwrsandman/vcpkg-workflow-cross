@@ -7,7 +7,7 @@
         {
             "name": "bgfx",
             "default-features": false,
-            "features": []
+            "features": ["tools"]
         }
     ]
 }

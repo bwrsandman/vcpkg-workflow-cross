@@ -5,14 +5,12 @@ project(vcpkg-workflow-cross)
 add_executable(vcpkg-workflow-cross main.cpp)
 
 find_package(spdlog CONFIG REQUIRED)
-find_package(Bullet CONFIG REQUIRED)
 find_package(cxxopts CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 find_package(unofficial-minizip CONFIG REQUIRED)
-find_package(SDL2 CONFIG REQUIRED)
 find_package(Stb REQUIRED)
 
 target_link_libraries(vcpkg-workflow-cross PRIVATE

@@ -12,6 +12,9 @@ jobs:
         include:
           - os: ubuntu-latest
             preset: ninja-multi-vcpkg
+            triplet: x64-linux
+          - os: ubuntu-latest
+            preset: ninja-multi-vcpkg
             triplet: x86-linux
             setup: |
               sudo dpkg --add-architecture i386
@@ -44,6 +47,9 @@ jobs:
               libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64
             cc: aarch64-linux-gnu-gcc
             cxx: aarch64-linux-gnu-g++
+          - os: windows-latest
+            preset: ninja-multi-vcpkg
+            triplet: x64-windows
           - os: windows-latest
             preset: ninja-multi-vcpkg
             triplet: x86-windows

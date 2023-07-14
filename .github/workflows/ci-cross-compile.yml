@@ -71,6 +71,7 @@ jobs:
 
       - name: Setup
         run: ${{ matrix.setup }}
+        if: matrix.setup
 
       - uses: lukka/get-cmake@latest
 

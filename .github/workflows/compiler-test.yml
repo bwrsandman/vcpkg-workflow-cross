@@ -13,15 +13,6 @@ jobs:
           - triplet: x86-linux
             os: ubuntu-latest
             preset: ninja-multi-vcpkg
-            setup: |
-              sudo dpkg --add-architecture i386
-              sudo apt-get update 
-              sudo apt-get install -y \
-                gcc-multilib \
-                gcc-i686-linux-gnu \
-                g++-i686-linux-gnu \
-                libx11-dev:i386 libxext-dev:i386 \
-                libgl1-mesa-dev:i386 libglu1-mesa-dev:i386
 
     steps:
       - uses: actions/checkout@v3
@@ -30,5 +21,14 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           submodules: recursive
 
+      - run: |
+            sudo dpkg --add-architecture i386
+            sudo apt-get update 
+            sudo apt-get install -y \
+                gcc-multilib \
+                gcc-i686-linux-gnu \
+                g++-i686-linux-gnu \
+                libx11-dev:i386 libxext-dev:i386 \
+                libgl1-mesa-dev:i386 libglu1-mesa-dev:i386
       - run: /usr/bin/cc test.c
       - run: /usr/bin/cc -m32 test.c

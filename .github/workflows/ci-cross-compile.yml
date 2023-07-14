@@ -82,6 +82,11 @@ jobs:
           buildPreset: '${{ matrix.preset }}-debug'
           testPreset: '${{ matrix.preset }}-debug'
 
+      - name: Show packages
+        if: failure() && steps.cmake-vcpkg-build.outcome == 'failure'
+        run: find vcpkg/packages/
+        shell: bash
+
       - name: Upload .log files
         if: failure() && steps.cmake-vcpkg-build.outcome == 'failure'
         uses: actions/upload-artifact@v2

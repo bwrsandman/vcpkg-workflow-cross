@@ -2,18 +2,12 @@
     "name": "vcpkg-workflow-cross",
     "version-string": "0.0.1-dev",
     "dependencies": [
-        "imgui",
         "spdlog",
-        "glm",
-        "stb",
-        "entt",
         "cxxopts",
         {
             "name": "bgfx",
             "default-features": false,
             "features": [ "multithreaded" ]
-        },        
-        "minizip",
-        "gtest"
+        }
     ]
 }

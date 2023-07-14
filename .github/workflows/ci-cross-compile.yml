@@ -103,7 +103,9 @@ jobs:
 
       - name: Show packages
         if: always()
-        run: find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
+        run: |
+          find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
+          find vcpkg/packages/
         shell: bash
 
       - name: Show file type

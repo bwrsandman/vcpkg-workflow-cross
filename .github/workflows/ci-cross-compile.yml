@@ -20,6 +20,14 @@ jobs:
               libgl1-mesa-dev libglu1-mesa-dev
           - os: ubuntu-latest
             preset: ninja-multi-vcpkg
+            triplet: x64-linux-dynamic
+            setup: |
+              sudo apt-get update
+              sudo apt-get install -y \
+              libx11-dev libxext-dev \
+              libgl1-mesa-dev libglu1-mesa-dev
+          - os: ubuntu-latest
+            preset: ninja-multi-vcpkg
             triplet: x86-linux
             setup: |
               sudo dpkg --add-architecture i386

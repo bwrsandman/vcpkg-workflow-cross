@@ -24,9 +24,6 @@ jobs:
               libgl1-mesa-dev libglu1-mesa-dev
             cc: i686-linux-gnu-gcc
             cxx: i686-linux-gnu-g++
-          - os: windows-latest
-            preset: ninja-multi-vcpkg
-            triplet: x86-windows
           - os: ubuntu-latest
             preset: ninja-multi-vcpkg
             triplet: arm64-linux
@@ -41,6 +38,12 @@ jobs:
               libgl1-mesa-dev libglu1-mesa-dev
             cc: aarch64-linux-gnu-gcc
             cxx: aarch64-linux-gnu-g++
+          - os: windows-latest
+            preset: ninja-multi-vcpkg
+            triplet: x86-windows
+          - os: windows-latest
+            preset: ninja-multi-vcpkg
+            triplet: arm64-windows
 
     env:
       CC: ${{ matrix.cc }}

@@ -103,14 +103,12 @@ jobs:
 
       - name: Show packages
         if: always()
-        run: |
-          find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
-          find vcpkg/packages/
+        run: find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
         shell: bash
 
       - name: Show file type
         if: always()
-        run: file vcpkg/packages/bgfx_${{ matrix.triplet}}/tools/bgfx/bin2c
+        run: file vcpkg/packages/bgfx_x64-*/tools/bgfx/bin2c
         shell: bash
 
       - name: Upload .log files

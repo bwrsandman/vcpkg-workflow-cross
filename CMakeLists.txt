@@ -16,9 +16,7 @@ find_package(SDL2 CONFIG REQUIRED)
 find_package(Stb REQUIRED)
 
 target_link_libraries(vcpkg-workflow-cross PRIVATE
-    ${BULLET_LIBRARIES}
     spdlog::spdlog
-    SDL2::SDL2
     cxxopts::cxxopts
     EnTT::EnTT
     glm::glm

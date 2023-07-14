@@ -27,9 +27,9 @@ jobs:
               CC: i686-linux-gnu-gcc
               CXX: i686-linux-gnu-g++
           - os: windows-latest
-            preset: msvc-17-vcpkg
+            preset: ninja-multi-vcpkg
             triplet: x86-windows
-            extra: '`-A`, `Win32`'
+            extra: '`-DCMAKE_GENERATOR_PLATFORM=x86`'
 
     steps:
       - uses: actions/checkout@v3

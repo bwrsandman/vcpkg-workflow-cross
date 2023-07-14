@@ -9,7 +9,7 @@ find_package(bgfx CONFIG REQUIRED)
 
 target_link_libraries(vcpkg-workflow-cross PRIVATE
     spdlog::spdlog
-    bgfx::bgfx
+    bgfx::bx
 )
 enable_testing()
 add_test(NAME test COMMAND vcpkg-workflow-cross)

@@ -12,6 +12,7 @@ find_package(GTest CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 find_package(unofficial-minizip CONFIG REQUIRED)
 find_package(Stb REQUIRED)
+find_package(bgfx CONFIG REQUIRED)
 
 target_link_libraries(vcpkg-workflow-cross PRIVATE
     spdlog::spdlog
@@ -21,6 +22,7 @@ target_link_libraries(vcpkg-workflow-cross PRIVATE
     GTest::gmock GTest::gmock_main
     imgui::imgui
     unofficial::minizip::minizip
+    bgfx::bx
 )
 target_include_directories(vcpkg-workflow-cross PRIVATE ${Stb_INCLUDE_DIR})
 

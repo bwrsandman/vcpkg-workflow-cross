@@ -8,6 +8,11 @@
         "stb",
         "entt",
         "cxxopts",
+        {
+            "name": "bgfx",
+            "default-features": false,
+            "features": [ "multithreaded" ]
+        },        
         "minizip",
         "gtest"
     ]

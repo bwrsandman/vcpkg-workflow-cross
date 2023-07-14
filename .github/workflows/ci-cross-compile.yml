@@ -40,9 +40,17 @@ jobs:
           vcpkgJsonGlob: 'vcpkg.json'
 
       - name: Run CMake+vcpkg to build packages.
+        id: cmake-vcpkg-build
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
           configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`${{ matrix.extra && format(', {0}, `-DVCPKG_TARGET_TRIPLET={1}`', matrix.extra, matrix.triplet) }}]"
           buildPreset: '${{ matrix.preset }}-debug'
           testPreset: '${{ matrix.preset }}-debug'
+
+      - name: Upload .log files
+        if: failure() && steps.cmake-vcpkg-build.outcome == 'failure'
+        uses: actions/upload-artifact@v2
+        with:
+          name: log-files
+          path: vcpkg/buildtrees/bgfx/*.log

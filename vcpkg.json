@@ -3,7 +3,6 @@
     "version-string": "0.0.1-dev",
     "dependencies": [
         "spdlog",
-        "cxxopts",
         {
             "name": "bgfx",
             "default-features": false,

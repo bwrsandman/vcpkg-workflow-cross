@@ -23,15 +23,17 @@ jobs:
               libx11-dev:i386 libxext-dev:i386 \
               libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 \
               libgl1-mesa-dev libglu1-mesa-dev
-            env:
-              CC: i686-linux-gnu-gcc
-              CXX: i686-linux-gnu-g++
+            cc: i686-linux-gnu-gcc
+            cxx: i686-linux-gnu-g++
           - os: windows-latest
             preset: ninja-multi-vcpkg
             triplet: x86-windows
             extra: '`-DCMAKE_GENERATOR_PLATFORM=x86`'
-            env:
-              VCPKG_DEFAULT_TRIPLET: x86-windows
+
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
+      VCPKG_DEFAULT_TRIPLET: ${{ matrix.triplet }}
 
     steps:
       - uses: actions/checkout@v3

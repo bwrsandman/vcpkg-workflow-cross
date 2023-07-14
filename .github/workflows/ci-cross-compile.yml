@@ -13,7 +13,6 @@ jobs:
           - os: ubuntu-latest
             preset: ninja-multi-vcpkg
             triplet: x86-linux
-            extra: '`-DCMAKE_C_COMPILER=i686-linux-gnu-gcc`, `-DCMAKE_CXX_COMPILER=i686-linux-gnu-g++`'
             setup: |
               sudo dpkg --add-architecture i386
               sudo apt-get update 
@@ -56,7 +55,7 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
-          configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`${{ matrix.extra && format(', {0}, `-DVCPKG_TARGET_TRIPLET={1}`', matrix.extra, matrix.triplet) }}]"
+          configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`]"
           buildPreset: '${{ matrix.preset }}-debug'
           testPreset: '${{ matrix.preset }}-debug'
 

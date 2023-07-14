@@ -4,7 +4,9 @@
     "dependencies": [
         {
             "name": "sdl2",
-            "features": ["x11"],
+            "features": [
+                "x11"
+            ],
             "platform": "linux&!android",
             "$reason": "https://github.com/microsoft/vcpkg/issues/21750"
         },
@@ -18,9 +20,25 @@
         "stb",
         "entt",
         "cxxopts",
+        {
+            "name": "bgfx",
+            "default-features": false,
+            "features": [
+                "tools",
+                "multithreaded"
+            ],
+            "host": true,
+            "$reason": "Don't want to build shaderc on non-native platforms so they are built on the host config."
+        },
+        {
+            "name": "bgfx",
+            "default-features": false,
+            "features": [
+                "multithreaded"
+            ]
+        },
         "bullet3",
         "minizip",
         "gtest"
-
     ]
 }

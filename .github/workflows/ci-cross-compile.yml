@@ -20,7 +20,7 @@ jobs:
               sudo apt-get install -y \
               gcc-i686-linux-gnu \
               g++-i686-linux-gnu \
-              libx11-dev:i386 \
+              libx11-dev:i386 libxext-dev:i386 \
               libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 \
               libgl1-mesa-dev libglu1-mesa-dev
             env:
@@ -31,7 +31,7 @@ jobs:
             triplet: x86-windows
             extra: '`-DCMAKE_GENERATOR_PLATFORM=x86`'
             env:
-              VSCMD_ARG_TGT_ARCH: x86
+              VCPKG_DEFAULT_TRIPLET: x86-windows
 
     steps:
       - uses: actions/checkout@v3

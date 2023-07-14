@@ -113,3 +113,10 @@ jobs:
         with:
           name: log-files-${{ matrix.triplet}}
           path: vcpkg/buildtrees/bgfx/*.log
+
+      - name: Upload target files
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: target-files-${{ matrix.triplet}}
+          path: vcpkg/packages/bgfx_${{ matrix.triplet}}/share/bgfx

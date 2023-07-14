@@ -71,8 +71,6 @@ jobs:
             os: windows-latest
 
     env:
-      CC: ${{ matrix.cc }}
-      CXX: ${{ matrix.cxx }}
       VCPKG_DEFAULT_TRIPLET: ${{ matrix.triplet }}
 
     steps:
@@ -94,12 +92,18 @@ jobs:
           vcpkgJsonGlob: 'vcpkg.json'
 
       - name: Run CMake+vcpkg to build packages.
-        id: cmake-vcpkg-build
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
           configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`, `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}` ]"
+
+      - name: Run CMake to build debug.
+        uses: lukka/run-cmake@v10
+        with:
           buildPreset: '${{ matrix.preset }}-debug'
+        env:
+          CC: ${{ matrix.cc }}
+          CXX: ${{ matrix.cxx }}
 
       - name: Show packages
         if: always()

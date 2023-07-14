@@ -20,8 +20,7 @@ jobs:
               gcc-i686-linux-gnu \
               g++-i686-linux-gnu \
               libx11-dev:i386 libxext-dev:i386 \
-              libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 \
-              libgl1-mesa-dev libglu1-mesa-dev
+              libgl1-mesa-dev:i386 libglu1-mesa-dev:i386
             cc: i686-linux-gnu-gcc
             cxx: i686-linux-gnu-g++
           - os: ubuntu-latest
@@ -34,8 +33,7 @@ jobs:
               gcc-aarch64-linux-gnu \
               g++-aarch64-linux-gnu \
               libx11-dev:arm64 libxext-dev:arm64 \
-              libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64 \
-              libgl1-mesa-dev libglu1-mesa-dev
+              libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64
             cc: aarch64-linux-gnu-gcc
             cxx: aarch64-linux-gnu-g++
           - os: windows-latest

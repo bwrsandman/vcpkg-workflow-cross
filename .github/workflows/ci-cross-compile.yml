@@ -112,7 +112,7 @@ jobs:
 
       - name: Show file type
         if: always()
-        run: file vcpkg/packages/bgfx_x64-*/tools/bgfx/bin2c
+        run: ls -l /usr/bin/cc
         shell: bash
 
       - name: Upload .log files

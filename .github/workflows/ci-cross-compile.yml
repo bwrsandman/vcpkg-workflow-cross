@@ -104,7 +104,7 @@ jobs:
 
       - name: Show packages
         if: always()
-        run: find vcpkg/packages/
+        run: find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
         shell: bash
 
       - name: Upload .log files

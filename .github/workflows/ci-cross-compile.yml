@@ -28,7 +28,6 @@ jobs:
           - os: windows-latest
             preset: ninja-multi-vcpkg
             triplet: x86-windows
-            extra: '`-DCMAKE_GENERATOR_PLATFORM=x86`'
 
     env:
       CC: ${{ matrix.cc }}

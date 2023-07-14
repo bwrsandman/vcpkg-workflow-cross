@@ -89,13 +89,13 @@ jobs:
           testPreset: '${{ matrix.preset }}-debug'
 
       - name: Show packages
-        if: failure() && steps.cmake-vcpkg-build.outcome == 'failure'
+        if: always()
         run: find vcpkg/packages/
         shell: bash
 
       - name: Upload .log files
-        if: failure() && steps.cmake-vcpkg-build.outcome == 'failure'
+        if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: log-files
+          name: log-files-${{ matrix.triplet}}
           path: vcpkg/buildtrees/bgfx/*.log

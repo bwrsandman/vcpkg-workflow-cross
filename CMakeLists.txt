@@ -14,14 +14,8 @@ target_link_libraries(vcpkg-workflow-cross PRIVATE
 enable_testing()
 add_test(NAME test COMMAND vcpkg-workflow-cross)
 
-if (WIN32)
-get_property(my_package_include_dirs
-             TARGET bgfx::bgfx
-             PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
-else ()
 get_property(my_package_include_dirs
              TARGET bgfx::bx
              PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
-endif ()
 
 message("Include directories of MyPackage: ${my_package_include_dirs}")

@@ -2,7 +2,7 @@ name: Cross Compile CI
 on:
   push:
     branches:
-      - '*'
+      - 'disabled'
 jobs:
   build:
     runs-on: ${{ matrix.os }}

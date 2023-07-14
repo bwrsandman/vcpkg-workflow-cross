@@ -30,6 +30,8 @@ jobs:
             preset: ninja-multi-vcpkg
             triplet: x86-windows
             extra: '`-DCMAKE_GENERATOR_PLATFORM=x86`'
+            env:
+              VSCMD_ARG_TGT_ARCH: x86
 
     steps:
       - uses: actions/checkout@v3

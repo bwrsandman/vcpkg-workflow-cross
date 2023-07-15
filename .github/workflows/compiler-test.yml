@@ -25,6 +25,9 @@ jobs:
             sudo apt-get update 
             sudo apt-get install -y \
                 gcc-multilib
+            sudo dpkg --add-architecture i386
+            libx11-dev:i386 libxext-dev:i386 \
+            libgl1-mesa-dev:i386 libglu1-mesa-dev:i386
       - run: /usr/bin/cc test.c -o test
       - run: /usr/bin/cc -m32 test.c -o test-32
       - run: file test*

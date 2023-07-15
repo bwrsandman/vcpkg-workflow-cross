@@ -11,7 +11,7 @@ bgfx_compile_binary_to_header(
   ARRAY_NAME binary_data
 )
 
-add_executable(vcpkg-workflow-cross binary.bin main.cpp)
+add_executable(vcpkg-workflow-cross main.cpp)
 
 target_link_libraries(vcpkg-workflow-cross PRIVATE
     spdlog::spdlog

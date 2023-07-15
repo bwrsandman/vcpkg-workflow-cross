@@ -49,7 +49,7 @@ jobs:
               echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy-backports main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list.d/arm-cross-compile-sources.list
               sudo sed -i 's/^deb /deb [arch=amd64] /g' /etc/apt/sources.list
               sudo apt-get update
-              sudo apt-get install -y libx11-dev:arm64 libxext-dev:arm64 libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64 gcc:arm64 g++:arm64
+              sudo apt-get install -y libx11-dev:arm64 libxext-dev:arm64 libgl1-mesa-dev:arm64 libglu1-mesa-dev:arm64 gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
           - triplet: x64-windows
             preset: ninja-multi-vcpkg
             os: windows-latest

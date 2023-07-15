@@ -28,8 +28,6 @@ jobs:
             os: ubuntu-latest
             preset: ninja-multi-vcpkg
             setup: |
-              sudo apt-get update
-              sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev
               sudo dpkg --add-architecture i386
               sudo apt-get update
               sudo apt-get install -y libx11-dev:i386 libxext-dev:i386 libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 gcc:i386 g++:i386

@@ -38,7 +38,7 @@ jobs:
             preset: ninja-multi-vcpkg
             setup: |
               sudo apt-get update
-              sudo apt-get install -y gcc-multilib g++-multilib
+              sudo apt-get install -y gcc-multilib g++-multilib gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
               sudo dpkg --add-architecture arm64
               echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy main restricted"                               | sudo tee    /etc/apt/sources.list.d/arm-cross-compile-sources.list
               echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy-updates main restricted"                       | sudo tee -a /etc/apt/sources.list.d/arm-cross-compile-sources.list

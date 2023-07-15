@@ -30,10 +30,12 @@ jobs:
             setup: |
               sudo apt-get update
               sudo apt-get install -y gcc-multilib g++-multilib libgl1-mesa-dev libglu1-mesa-dev
-              ls /usr/include/asm
+              ls /usr/include/asm/types.h
               sudo dpkg --add-architecture i386
-              sudo apt-get update 
+              sudo apt-get update
+              ls /usr/include/asm/types.h
               sudo apt-get install -y libx11-dev:i386 libxext-dev:i386 libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 gcc-i686-linux-gnu g++-i686-linux-gnu
+              ls /usr/include/asm/types.h
           - triplet: arm64-linux
             os: ubuntu-latest
             preset: ninja-multi-vcpkg

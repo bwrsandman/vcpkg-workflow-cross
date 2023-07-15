@@ -21,8 +21,4 @@ target_include_directories(vcpkg-workflow-cross PRIVATE ${CMAKE_BINARY_DIR}/incl
 enable_testing()
 add_test(NAME test COMMAND vcpkg-workflow-cross)
 
-get_property(my_package_include_dirs
-             TARGET bgfx::bx
-             PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
-
-message("Include directories of MyPackage: ${my_package_include_dirs}")
+message("cross: ${CMAKE_CROSSCOMPILING}")

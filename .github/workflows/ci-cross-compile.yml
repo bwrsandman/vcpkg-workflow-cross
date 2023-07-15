@@ -91,7 +91,9 @@ jobs:
       - name: Show packages
         if: always()
         run: |
-          find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
+          find  cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
+          file  cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/arm64-linux/debug/lib/libspdlogd.a
+          nm -g cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/arm64-linux/debug/lib/libspdlogd.a
         shell: bash
 
       - name: Upload .log files

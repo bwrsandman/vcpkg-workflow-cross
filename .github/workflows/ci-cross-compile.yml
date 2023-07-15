@@ -94,7 +94,9 @@ jobs:
 
       - name: Show packages
         if: always()
-        run: find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
+        run: |
+          find cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/
+          ls -l /usr/include/asm/types.h
         shell: bash
 
       - name: Upload .log files

@@ -25,5 +25,6 @@ jobs:
             sudo apt-get update 
             sudo apt-get install -y \
                 gcc-multilib
-      - run: /usr/bin/cc test.c
-      - run: /usr/bin/cc -m32 test.c
+      - run: /usr/bin/cc test.c -o test
+      - run: /usr/bin/cc -m32 test.c -o test-32
+      - run: file test*

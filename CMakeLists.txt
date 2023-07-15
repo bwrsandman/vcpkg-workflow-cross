@@ -15,7 +15,7 @@ add_executable(vcpkg-workflow-cross binary.bin main.cpp)
 
 target_link_libraries(vcpkg-workflow-cross PRIVATE
     spdlog::spdlog
-    bgfx::bx
+    bgfx::bx bgfx::bimg bgfx::bgfx
 )
 target_include_directories(vcpkg-workflow-cross PRIVATE ${CMAKE_BINARY_DIR}/include)
 enable_testing()

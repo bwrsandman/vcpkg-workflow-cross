@@ -58,8 +58,17 @@ jobs:
           - triplet: arm64-windows
             preset: ninja-multi-vcpkg
             os: windows-latest
+          - preset: emscripten-vcpkg
+            os: ubuntu-latest
+            setup: |
+              git clone https://github.com/emscripten-core/emsdk ${EMSDK}
+              cd ${EMSDK}
+              ./emsdk install latest
+              ./emsdk activate latest
+
 
     env:
+      EMSDK: '/tmp/emsdk'
       VCPKG_DEFAULT_TRIPLET: ${{ matrix.triplet }}
 
     steps:

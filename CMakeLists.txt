@@ -21,32 +21,8 @@ target_include_directories(vcpkg-workflow-cross PRIVATE ${CMAKE_BINARY_DIR}/incl
 enable_testing()
 add_test(NAME test COMMAND vcpkg-workflow-cross)
 
-# Map CMAKE_HOST_SYSTEM_PROCESSOR value
-if(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "AMD64" OR ${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86_64")
-    set(OPENBLACK_HOST_ARCH "x64")
-elseif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86" OR ${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "i386")
-    set(OPENBLACK_HOST_ARCH "Win32")
-elseif(${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "ARM64")
-    set(OPENBLACK_HOST_ARCH "ARM64")
-else()
-    set(OPENBLACK_HOST_ARCH ${CMAKE_HOST_SYSTEM_PROCESSOR})
-endif()
+get_property(my_package_include_dirs
+             TARGET bgfx::bx
+             PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
 
-set(OPENBLACK_CROSSCOMPILING ${CMAKE_CROSSCOMPILING})
-if(MSVC)
-    message("msvc")
-    if(NOT "${OPENBLACK_HOST_ARCH}" STREQUAL "${CMAKE_VS_PLATFORM_NAME}" AND NOT "${OPENBLACK_HOST_ARCH}" MATCHES ${VCPKG_TARGET_TRIPLET})
-        message("cross compiling")
-    else()
-      message("not cross compiling")
-    endif()
-endif()
-
-message("cross: ${CMAKE_CROSSCOMPILING}")
-message("host: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
-message("target: ${CMAKE_SYSTEM_PROCESSOR}")
-message("CMAKE_VS_PLATFORM_NAME: ${CMAKE_VS_PLATFORM_NAME}")
-message("CMAKE_VS_PLATFORM_NAME_DEFAULT: ${CMAKE_VS_PLATFORM_NAME_DEFAULT}")
-message("OPENBLACK_HOST_ARCH: ${OPENBLACK_HOST_ARCH}")
-message("VCPKG_TARGET_TRIPLET: ${VCPKG_TARGET_TRIPLET}")
-message("VCPKG_TARGET_ARCH: ${VCPKG_TARGET_ARCH}")
+message("Include directories of MyPackage: ${my_package_include_dirs}")

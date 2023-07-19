@@ -3,16 +3,6 @@
     "version-string": "0.0.1-dev",
     "dependencies": [
         "spdlog",
-        {
-            "name": "bgfx",
-            "default-features": false,
-            "host": true,
-            "features": ["tools"]
-        },
-        {
-            "name": "bgfx",
-            "default-features": false,
-            "features": []
-        }
+        "openal-soft"
     ]
 }

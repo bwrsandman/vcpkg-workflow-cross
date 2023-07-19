@@ -31,9 +31,9 @@ jobs:
               sudo dpkg --add-architecture i386
               sudo apt-get update
               sudo apt-get install -y libx11-dev:i386 libxext-dev:i386 libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 gcc:i386 g++:i386
-            error_commands: |
-              cat /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/vcpkg/issue_body.md
-              cat /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/vcpkg/buildtrees/alsa/autoconf-x86-linux-err.log
+            error_uploads: |
+              /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/vcpkg/issue_body.md
+              /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/vcpkg/buildtrees/alsa/autoconf-x86-linux-err.log
           - triplet: arm64-linux
             os: ubuntu-latest
             preset: ninja-multi-vcpkg
@@ -91,9 +91,12 @@ jobs:
         with:
           buildPreset: '${{ matrix.preset }}-debug'
 
-      - name: Error Commands
-        if: always() && matrix.error_comamnds
-        run: ${{ matrix.error_comamnds }}
+      - name: Error Uploads
+        if: always() && matrix.error_uploads
+        uses: actions/upload-artifact@v2
+        with:
+          name: error-upload-${{ matrix.triplet}}
+          path: ${{ matrix.error_uploads }}
 
       - name: Upload .log files
         if: always()

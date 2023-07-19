@@ -60,6 +60,7 @@ jobs:
             preset: ninja-multi-vcpkg
             os: windows-latest
           - preset: emscripten-vcpkg
+            triplet: wasm32-emscripten
             os: ubuntu-latest
             setup: |
               git clone https://github.com/emscripten-core/emsdk ${EMSDK}

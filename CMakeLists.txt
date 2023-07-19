@@ -13,3 +13,9 @@ target_link_libraries(vcpkg-workflow-cross PRIVATE
 )
 enable_testing()
 add_test(NAME test COMMAND vcpkg-workflow-cross)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mbulk-memory -matomics")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_PTHREADS=1")
+
+if (EMSCRIPTEN)
+  set_target_properties(vcpkg-workflow-cross PROPERTIES COMPILE_FLAGS "-mbulk-memory -matomics -s USE_PTHREADS=1" SUFFIX ".html")
+endif ()

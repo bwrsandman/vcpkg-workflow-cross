@@ -96,8 +96,8 @@ jobs:
         with:
           configurePreset: '${{ matrix.preset }}'
           configurePresetAdditionalArgs: |
-            - `-DVCPKG_TRACE_FIND_PACKAGE=ON`
-            - `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}`
+            `-DVCPKG_TRACE_FIND_PACKAGE=ON`
+            `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}`
 
       - name: Run CMake to build debug.
         uses: lukka/run-cmake@v10

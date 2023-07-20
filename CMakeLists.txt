@@ -2,10 +2,6 @@ cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 project(vcpkg-workflow-cross)
 
-if (VCPKG_TARGET_TRIPLET STREQUAL "x86-linux")
-  set(CMAKE_C_FLAGS -m32)
-  set(CMAKE_CXX_FLAGS -m32)
-endif()
 set(CMAKE_FIND_DEBUG_MODE TRUE)
 find_package(spdlog CONFIG REQUIRED)
 find_package(OpenAL CONFIG REQUIRED)

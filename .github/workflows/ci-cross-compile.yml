@@ -31,7 +31,7 @@ jobs:
               sudo dpkg --add-architecture i386
               sudo apt-get update
               sudo apt-get install -y libx11-dev:i386 libxext-dev:i386 libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 libtool autoconf gcc-multilib g++-multilib libc6-dev-i386
-            additional_args: `-DCMAKE_C_FLAGS=-m32`, `-DCMAKE_CXX_FLAGS=-m32`
+            additional_args: "`-DCMAKE_C_FLAGS=-m32`, `-DCMAKE_CXX_FLAGS=-m32`"
             error_uploads: |
               /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/vcpkg/issue_body.md
               /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/vcpkg/buildtrees/alsa/autoconf-x86-linux-err.log

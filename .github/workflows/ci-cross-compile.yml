@@ -31,7 +31,7 @@ jobs:
               sudo dpkg --add-architecture i386
               sudo apt-get update
               sudo apt-get install -y libx11-dev:i386 libxext-dev:i386 libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 libtool autoconf gcc-multilib g++-multilib libc6-dev-i386
-
+            additional-args: `-DCMAKE_C_FLAGS=-m32`, `-DCMAKE_CXX_FLAGS=-m32`
             error_uploads: |
               /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/cmake-build-presets/ninja-multi-vcpkg/vcpkg_installed/vcpkg/issue_body.md
               /home/runner/work/vcpkg-workflow-cross/vcpkg-workflow-cross/vcpkg/buildtrees/alsa/autoconf-x86-linux-err.log
@@ -95,9 +95,7 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
-          configurePresetAdditionalArgs: |
-            `-DVCPKG_TRACE_FIND_PACKAGE=ON`
-            `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}`
+          configurePresetAdditionalArgs: "[`-DVCPKG_TRACE_FIND_PACKAGE=ON`, `${{ matrix.triplet && format(', `-DVCPKG_TARGET_TRIPLET={0}`', matrix.triplet) }}`, `${{ matrix.additional-args && format(', {0}', matrix.additional-args) }}` ]"
 
       - name: Run CMake to build debug.
         uses: lukka/run-cmake@v10

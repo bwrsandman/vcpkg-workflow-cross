@@ -95,7 +95,7 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
-          configurePresetAdditionalArgs: |
+          configurePresetAdditionalArgs:
             - `-DVCPKG_TRACE_FIND_PACKAGE=ON`
             - `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}`
 

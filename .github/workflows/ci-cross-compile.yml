@@ -95,7 +95,7 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
-          configurePresetAdditionalArgs: "[`-DVCPKG_TRACE_FIND_PACKAGE=ON`, `${{ matrix.triplet && format(', `-DVCPKG_TARGET_TRIPLET={0}`', matrix.triplet) }}`, `${{ matrix.additional_args && format(', {0}', matrix.additional_args) }}` ]"
+          configurePresetAdditionalArgs: "[`-DVCPKG_TRACE_FIND_PACKAGE=ON`, ${{ matrix.triplet && format(', `-DVCPKG_TARGET_TRIPLET={0}`', matrix.triplet) }}, ${{ matrix.additional_args && format(', {0}', matrix.additional_args) }} ]"
 
       - name: Run CMake to build debug.
         uses: lukka/run-cmake@v10

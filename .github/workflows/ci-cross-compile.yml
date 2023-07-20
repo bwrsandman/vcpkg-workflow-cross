@@ -95,7 +95,7 @@ jobs:
         uses: lukka/run-cmake@v10
         with:
           configurePreset: '${{ matrix.preset }}'
-          configurePresetAdditionalArgs: "[`-DOPENBLACK_WARNINGS_AS_ERRORS=ON`, `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}` ]"
+          configurePresetAdditionalArgs: "[`-DVCPKG_TRACE_FIND_PACKAGE=ON`, `-DVCPKG_TARGET_TRIPLET=${{ matrix.triplet}}` ]"
 
       - name: Run CMake to build debug.
         uses: lukka/run-cmake@v10

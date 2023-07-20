@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
 project(vcpkg-workflow-cross)
 
+set(CMAKE_FIND_DEBUG_MODE TRUE)
 find_package(spdlog CONFIG REQUIRED)
 find_package(OpenAL CONFIG REQUIRED)
+set(CMAKE_FIND_DEBUG_MODE FALSE)
 
 add_executable(vcpkg-workflow-cross main.cpp)
 
